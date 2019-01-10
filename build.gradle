@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'com.snappet'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    systemProperty "browserType", System.getProperty("browserType")
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+    useTestNG {
+        suites "src/test/testng.xml"
+    }
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '4.2.0'
+    compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.2.0'
+    compile 'org.apache.commons:commons-lang3:3.8.1'
+}
